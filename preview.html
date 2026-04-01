@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preview - Mansfield Story</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .preview-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #002147;
+            border-bottom: 3px solid #D4AF37;
+            padding-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #C19B2E 100%);
+            color: #002147;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .feature {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #D4AF37;
+        }
+        code {
+            background: #002147;
+            color: #D4AF37;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-box">
+        <h1>✅ Mansfield Story - Portal Gotowy!</h1>
+        
+        <div class="success">
+            <strong>🎉 Sukces!</strong> Twój dwujęzyczny portal newsowy został stworzony i jest gotowy do wrzucenia na GitHub Pages!
+        </div>
+        
+        <h2>📦 Co zostało stworzone:</h2>
+        <div class="feature">
+            <strong>index.html</strong> - Kompletna strona (25KB)<br>
+            ✅ Dwujęzyczność PL/EN z przełącznikiem<br>
+            ✅ Navbar z logo i nawigacją<br>
+            ✅ Hero section z gradientem<br>
+            ✅ Breaking news alert (czerwony, pulsujący)<br>
+            ✅ Siatka wiadomości (3 kolumny na desktop)<br>
+            ✅ Sekcja "O reporterze" z avatarem<br>
+            ✅ Formularz kontaktowy (Formspree ready)<br>
+            ✅ Footer z social media<br>
+            ✅ Responsywny design (mobile-first)
+        </div>
+        
+        <div class="feature">
+            <strong>newsy.json</strong> - 6 przykładowych wiadomości<br>
+            ✅ Struktura z polami PL/EN<br>
+            ✅ Pole "breaking" dla pilnych newsów<br>
+            ✅ Linki do obrazków z Unsplash<br>
+            ✅ Linki do postów na X (Twitter)
+        </div>
+        
+        <div class="feature">
+            <strong>MANSFIELD_README.md</strong> - Kompletna dokumentacja<br>
+            ✅ Instrukcja wdrożenia na GitHub Pages<br>
+            ✅ Jak edytować newsy<br>
+            ✅ Jak dodać Formspree ID<br>
+            ✅ FAQ i wsparcie
+        </div>
+        
+        <h2>🚀 Następne kroki:</h2>
+        <ol>
+            <li>Pobierz 3 pliki: <code>index.html</code>, <code>newsy.json</code>, <code>image_6.png</code> (twoje zdjęcie)</li>
+            <li>Stwórz repozytorium na GitHubie (np. "mansfield-story")</li>
+            <li>Wrzuć pliki do repo</li>
+            <li>Włącz GitHub Pages w Settings → Pages</li>
+            <li>W <code>index.html</code> zamień <code>YOUR_FORM_ID</code> na swój ID z Formspree.io</li>
+        </ol>
+        
+        <h2>🎨 Kolory brandingowe:</h2>
+        <ul>
+            <li><span style="color: #002147;">●</span> Deep Navy: <code>#002147</code></li>
+            <li><span style="color: #D4AF37;">●</span> Gold: <code>#D4AF37</code></li>
+            <li><span style="color: #DC2626;">●</span> Breaking Red: <code>#DC2626</code></li>
+        </ul>
+        
+        <h2>✨ Funkcje:</h2>
+        <ul>
+            <li>✅ Język zapisuje się w localStorage (wybór użytkownika jest zapamiętany)</li>
+            <li>✅ Animacja pulsowania dla breaking news</li>
+            <li>✅ Hover effects na kartach newsów</li>
+            <li>✅ Glassmorphism w sekcji kontaktowej</li>
+            <li>✅ Smooth scroll między sekcjami</li>
+            <li>✅ FontAwesome icons</li>
+            <li>✅ Google Fonts (Inter)</li>
+            <li>✅ Zero kosztów - wszystko CDN + GitHub Pages</li>
+        </ul>
+        
+        <a href="index.html" class="btn">👀 Zobacz pełną stronę</a>
+        <a href="newsy.json" class="btn">📰 Zobacz JSON z newsami</a>
+        <a href="MANSFIELD_README.md" class="btn">📖 Przeczytaj README</a>
+        
+        <h2>📝 Jak edytować newsy:</h2>
+        <p>Otwórz <code>newsy.json</code> i dodaj/edytuj obiekty w tablicy "news". Przykład:</p>
+        <pre style="background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto;">
+{
+  "id": 7,
+  "breaking": false,
+  "title_pl": "Twój tytuł",
+  "title_en": "Your title",
+  "text_pl": "Treść po polsku...",
+  "text_en": "Content in English...",
+  "image": "https://link-do-zdjecia.jpg",
+  "date": "2025-03-15",
+  "link": "https://x.com/twoj-post"
+}</pre>
+        
+        <h2>💡 Pro Tips:</h2>
+        <ul>
+            <li>Ustaw <code>"breaking": true</code> dla pilnych wiadomości</li>
+            <li>Używaj obrazków z Unsplash (darmowe, wysokiej jakości)</li>
+            <li>Każdy news może linkować do posta na X/Twitter</li>
+            <li>Możesz zmienić kolory w sekcji <code>&lt;style&gt;</code> w index.html</li>
+        </ul>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #002147; color: white; text-align: center; border-radius: 10px;">
+            <h3 style="color: #D4AF37; margin-top: 0;">Gotowe do startu! 🚀</h3>
+            <p>Twoja strona jest w pełni funkcjonalna i gotowa do hostingu na GitHub Pages.<br>
+            Zero kosztów, zero komplikacji, maksimum profesjonalizmu.</p>
+            <p style="font-size: 14px; opacity: 0.8; margin-bottom: 0;">
+                <strong>Stwórz swoją historię. Share your story.</strong> 🇵🇱🇬🇧
+            </p>
+        </div>
+    </div>
+</body>
+</html>
