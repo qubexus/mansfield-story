@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mansfield Story - Twoje Wiadomości | Your News</title>
+    <meta name="description" content="Dwujęzyczny portal newsowy dla Polonii w Mansfield">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #002147 0%, #001529 100%);
+            border-bottom: 3px solid #D4AF37;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #D4AF37 0%, #C19B2E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+        }
+        
+        .lang-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: #002147;
+            border: 2px solid #D4AF37;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: #D4AF37;
+            color: #002147;
+        }
+        
+        .lang-btn.active {
+            background: #D4AF37;
+            color: #002147;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #C19B2E 100%);
+            color: #002147;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Breaking News */
+        .breaking-news {
+            background: #DC2626;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.8); }
+        }
+        
+        .breaking-news span {
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+        
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background: #D4AF37;
+            margin: 0 auto 50px;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,33,71,0.2);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .breaking-badge {
+            display: inline-block;
+            background: #DC2626;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #002147;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .news-date {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .news-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .news-link:hover {
+            color: #C19B2E;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 60px 20px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 33, 71, 0.05);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+        
+        .reporter-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #D4AF37;
+            margin: 0 auto 20px;
+            object-fit: cover;
+        }
+        
+        .about-content h3 {
+            font-size: 24px;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+        
+        .about-role {
+            color: #D4AF37;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+        
+        .about-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #D4AF37;
+            color: #002147;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Contact Form */
+        .contact-section {
+            background: #002147;
+            color: white;
+            padding: 60px 20px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #D4AF37 0%, #C19B2E 100%);
+            color: #002147;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #002147 0%, #001529 100%);
+            border-top: 3px solid #D4AF37;
+            color: white;
+            padding: 50px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: #D4AF37;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+            
+            .about-content,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div class="logo-section">
+                    <div class="logo">📰</div>
+                    <div class="logo-text">
+                        <h1>Mansfield Story</h1>
+                        <p class="translate" data-key="tagline">Twoje wiadomości z Mansfield</p>
+                    </div>
+                </div>
+                
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="btn-pl" onclick="setLanguage('pl')">PL</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#news" class="translate" data-key="nav_news">Wiadomości</a>
+                <a href="#about" class="translate" data-key="nav_about">O nas</a>
+                <a href="#contact" class="translate" data-key="nav_contact">Zgłoś temat</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h2 class="translate" data-key="hero_title">Mansfield Story</h2>
+        <p class="translate" data-key="hero_subtitle">Twoje źródło wiadomości z Mansfield i okolic. Lokalne wydarzenia, relacje na żywo, i historie które mają znaczenie.</p>
+        <a href="#news" class="cta-button translate" data-key="hero_cta">Czytaj wiadomości ↓</a>
+    </section>
+
+    <!-- Breaking News (hidden by default) -->
+    <div id="breaking-section" class="breaking-news hidden">
+        <span class="translate" data-key="breaking">PILNE:</span>
+        <span id="breaking-text"></span>
+    </div>
+
+    <!-- News Section -->
+    <section id="news" class="container">
+        <h2 class="section-title translate" data-key="section_news">Najnowsze Wiadomości</h2>
+        <div class="section-divider"></div>
+        <div id="news-container" class="news-grid">
+            <!-- News cards will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title translate" data-key="section_about">O reporterze</h2>
+            <div class="section-divider"></div>
+            
+            <div class="about-content">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect fill='%23D4AF37' width='120' height='120' rx='60'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='48' fill='%23002147'%3EJ%3C/text%3E%3C/svg%3E" 
+                     alt="Jacob" class="reporter-avatar">
+                
+                <h3>Jacob</h3>
+                <p class="about-role translate" data-key="about_role">Reporter i założyciel Mansfield Story</p>
+                <p class="about-description translate" data-key="about_description">
+                    Jestem mieszkańcem Mansfield i pasjonatem dziennikarstwa obywatelskiego. 
+                    Moją misją jest łączenie lokalnej społeczności Polonii poprzez rzetelne i aktualne wiadomości. 
+                    Wierzę, że każda historia ma znaczenie.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://x.com/mansfieldstory" target="_blank" class="social-link">𝕏</a>
+                    <a href="mailto:contact@mansfieldstory.com" class="social-link">✉</a>
+                    <a href="#contact" class="social-link">📍</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title translate" data-key="section_contact" style="color: white;">Zgłoś temat</h2>
+            <p style="text-align: center; margin-bottom: 30px;" class="translate" data-key="contact_subtitle">
+                Masz ciekawą historię? Podziel się nią z nami!
+            </p>
+            <div class="section-divider"></div>
+            
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label class="translate" data-key="form_name">Twoje imię</label>
+                    <input type="text" name="name" required placeholder="Jan Kowalski">
+                </div>
+                
+                <div class="form-group">
+                    <label class="translate" data-key="form_email">Email</label>
+                    <input type="email" name="email" required placeholder="jan@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="translate" data-key="form_subject">Temat</label>
+                    <input type="text" name="subject" required placeholder="Tytuł historii">
+                </div>
+                
+                <div class="form-group">
+                    <label class="translate" data-key="form_message">Wiadomość</label>
+                    <textarea name="message" required placeholder="Opowiedz nam swoją historię..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn translate" data-key="form_submit">Wyślij zgłoszenie ➤</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Mansfield Story</h3>
+                <p class="translate" data-key="footer_desc">Dwujęzyczny portal newsowy dla Polonii w Mansfield</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="translate" data-key="footer_links">Linki</h3>
+                <a href="#news" class="translate" data-key="nav_news">Wiadomości</a>
+                <a href="#about" class="translate" data-key="nav_about">O nas</a>
+                <a href="#contact" class="translate" data-key="nav_contact">Zgłoś temat</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="translate" data-key="footer_social">Śledź nas</h3>
+                <a href="https://x.com/mansfieldstory" target="_blank">𝕏 Twitter/X</a>
+                <a href="mailto:contact@mansfieldstory.com">✉ Email</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mansfield Story. <span class="translate" data-key="footer_rights">Wszelkie prawa zastrzeżone.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // === TRANSLATIONS ===
+        const translations = {
+            pl: {
+                tagline: 'Twoje wiadomości z Mansfield',
+                nav_news: 'Wiadomości',
+                nav_about: 'O nas',
+                nav_contact: 'Zgłoś temat',
+                hero_title: 'Mansfield Story',
+                hero_subtitle: 'Twoje źródło wiadomości z Mansfield i okolic. Lokalne wydarzenia, relacje na żywo, i historie które mają znaczenie.',
+                hero_cta: 'Czytaj wiadomości ↓',
+                breaking: 'PILNE:',
+                section_news: 'Najnowsze Wiadomości',
+                section_about: 'O reporterze',
+                about_role: 'Reporter i założyciel Mansfield Story',
+                about_description: 'Jestem mieszkańcem Mansfield i pasjonatem dziennikarstwa obywatelskiego. Moją misją jest łączenie lokalnej społeczności Polonii poprzez rzetelne i aktualne wiadomości. Wierzę, że każda historia ma znaczenie.',
+                section_contact: 'Zgłoś temat',
+                contact_subtitle: 'Masz ciekawą historię? Podziel się nią z nami!',
+                form_name: 'Twoje imię',
+                form_email: 'Email',
+                form_subject: 'Temat',
+                form_message: 'Wiadomość',
+                form_submit: 'Wyślij zgłoszenie ➤',
+                read_more: 'Czytaj na X →',
+                footer_desc: 'Dwujęzyczny portal newsowy dla Polonii w Mansfield',
+                footer_links: 'Linki',
+                footer_social: 'Śledź nas',
+                footer_rights: 'Wszelkie prawa zastrzeżone.'
+            },
+            en: {
+                tagline: 'Your news from Mansfield',
+                nav_news: 'News',
+                nav_about: 'About',
+                nav_contact: 'Report a Story',
+                hero_title: 'Mansfield Story',
+                hero_subtitle: 'Your source for news from Mansfield and surrounding areas. Local events, live coverage, and stories that matter.',
+                hero_cta: 'Read news ↓',
+                breaking: 'BREAKING:',
+                section_news: 'Latest News',
+                section_about: 'About the Reporter',
+                about_role: 'Reporter and Founder of Mansfield Story',
+                about_description: 'I am a Mansfield resident and citizen journalism enthusiast. My mission is to connect the local Polish community through reliable and current news. I believe every story matters.',
+                section_contact: 'Report a Story',
+                contact_subtitle: 'Have an interesting story? Share it with us!',
+                form_name: 'Your name',
+                form_email: 'Email',
+                form_subject: 'Subject',
+                form_message: 'Message',
+                form_submit: 'Send report ➤',
+                read_more: 'Read on X →',
+                footer_desc: 'Bilingual news portal for Polish community in Mansfield',
+                footer_links: 'Links',
+                footer_social: 'Follow us',
+                footer_rights: 'All rights reserved.'
+            }
+        };
+
+        // === NEWS DATA ===
+        const newsData = [
+            {
+                id: 1,
+                breaking: true,
+                title_pl: "Wielkie otwarcie polskiego sklepu w centrum Mansfield",
+                title_en: "Grand opening of Polish store in Mansfield city centre",
+                text_pl: "W sobotę 15 marca odbędzie się uroczyste otwarcie nowego polskiego sklepu spożywczego przy Market Place. Właściciele zapowiadają świeże pieczywo, wędliny i tradycyjne polskie produkty.",
+                text_en: "On Saturday, March 15th, a ceremonial opening of a new Polish grocery store will take place at Market Place. The owners promise fresh bread, cold cuts, and traditional Polish products.",
+                image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&q=80",
+                date: "2025-03-10",
+                link: "https://x.com/mansfieldstory"
+            },
+            {
+                id: 2,
+                breaking: false,
+                title_pl: "Polonia w Mansfield świętuje Dzień Niepodległości",
+                title_en: "Polish community in Mansfield celebrates Independence Day",
+                text_pl: "11 listopada lokalna Polonia zorganizowała uroczystą akademię z okazji Dnia Niepodległości Polski. Wydarzenie odbyło się w Mansfield Central Library i zgromadziło ponad 100 osób.",
+                text_en: "On November 11th, the local Polish community organized a ceremonial gathering to celebrate Polish Independence Day. The event took place at Mansfield Central Library and gathered over 100 people.",
+                image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+                date: "2024-11-11",
+                link: "https://x.com/mansfieldstory"
+            },
+            {
+                id: 3,
+                breaking: false,
+                title_pl: "Nowa linia autobusowa połączy Mansfield z Nottingham",
+                title_en: "New bus line to connect Mansfield with Nottingham",
+                text_pl: "Od kwietnia rusza nowa, szybsza linia autobusowa łącząca Mansfield z centrum Nottingham. Czas przejazdu skróci się o 15 minut, co ucieszy wielu dojeżdżających do pracy.",
+                text_en: "Starting in April, a new, faster bus line connecting Mansfield with Nottingham city centre will launch. Travel time will be reduced by 15 minutes, pleasing many commuters.",
+                image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80",
+                date: "2025-03-08",
+                link: "https://x.com/mansfieldstory"
+            },
+            {
+                id: 4,
+                breaking: false,
+                title_pl: "Lokalni przedsiębiorcy z Polski otwierają kawiarnię",
+                title_en: "Local Polish entrepreneurs open coffee shop",
+                text_pl: "Młoda para z Polski właśnie otworzyła przytulną kawiarnię przy Leeming Street. W menu znajdziemy polskie ciasta, serniki i aromatyczną kawę prosto z Krakowa.",
+                text_en: "A young Polish couple just opened a cozy coffee shop on Leeming Street. The menu features Polish cakes, cheesecakes, and aromatic coffee straight from Krakow.",
+                image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
+                date: "2025-03-05",
+                link: "https://x.com/mansfieldstory"
+            },
+            {
+                id: 5,
+                breaking: false,
+                title_pl: "Bezpłatne kursy angielskiego dla Polonii",
+                title_en: "Free English courses for Polish community",
+                text_pl: "Biblioteka w Mansfield zaprasza Polonię na bezpłatne kursy angielskiego dla dorosłych. Zapisy trwają do końca marca. Zajęcia będą odbywać się dwa razy w tygodniu.",
+                text_en: "Mansfield Library invites the Polish community to free English courses for adults. Registration is open until the end of March. Classes will be held twice a week.",
+                image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=80",
+                date: "2025-03-01",
+                link: "https://x.com/mansfieldstory"
+            },
+            {
+                id: 6,
+                breaking: false,
+                title_pl: "Mansfield Town FC zaprasza na mecz - zniżki dla rodzin",
+                title_en: "Mansfield Town FC invites to match - family discounts",
+                text_pl: "W sobotę Mansfield Town zagra domowy mecz na Field Mill. Klub oferuje specjalne zniżki dla rodzin - idealna okazja, żeby wyjść z całą rodziną na stadion!",
+                text_en: "On Saturday, Mansfield Town will play a home match at Field Mill. The club offers special family discounts - a perfect opportunity to go to the stadium with the whole family!",
+                image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&q=80",
+                date: "2025-02-28",
+                link: "https://x.com/mansfieldstory"
+            }
+        ];
+
+        // === LANGUAGE SYSTEM ===
+        let currentLang = localStorage.getItem('mansfieldLang') || 'pl';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('mansfieldLang', lang);
+            
+            // Update buttons
+            document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            // Update all translations
+            document.querySelectorAll('.translate').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            // Reload news
+            loadNews();
+        }
+
+        function loadNews() {
+            // Check for breaking news
+            const breaking = newsData.find(n => n.breaking);
+            if (breaking) {
+                document.getElementById('breaking-section').classList.remove('hidden');
+                document.getElementById('breaking-text').textContent = 
+                    currentLang === 'pl' ? breaking.title_pl : breaking.title_en;
+            }
+            
+            // Render news cards
+            const container = document.getElementById('news-container');
+            container.innerHTML = newsData.map(news => `
+                <article class="news-card">
+                    <img src="${news.image}" alt="${currentLang === 'pl' ? news.title_pl : news.title_en}" 
+                         class="news-image" onerror="this.style.display='none'">
+                    <div class="news-content">
+                        ${news.breaking ? `<span class="breaking-badge">${translations[currentLang].breaking}</span>` : ''}
+                        <h3 class="news-title">${currentLang === 'pl' ? news.title_pl : news.title_en}</h3>
+                        <p class="news-text">${currentLang === 'pl' ? news.text_pl : news.text_en}</p>
+                        <div class="news-footer">
+                            <span class="news-date">📅 ${news.date}</span>
+                            <a href="${news.link}" target="_blank" class="news-link">${translations[currentLang].read_more}</a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', function() {
+            setLanguage(currentLang);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
