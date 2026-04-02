@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST - Czy to działa?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .success {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #002147;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #D4AF37;
+            color: #002147;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="success">
+            ✅ SUKCES! Ten plik działa!
+        </div>
+        
+        <h1>Test diagnostyczny Mansfield Story</h1>
+        
+        <p>Jeśli widzisz tę stronę, oznacza to że:</p>
+        <div class="info">
+            ✅ Twoja przeglądarka działa<br>
+            ✅ Możesz otwierać pliki HTML<br>
+            ✅ CSS się ładuje<br>
+            ✅ Podstawowe funkcje działają
+        </div>
+        
+        <h2>Test JavaScript:</h2>
+        <button onclick="testJS()">Kliknij aby przetestować JavaScript</button>
+        <p id="js-result"></p>
+        
+        <h2>Test przełączania języka:</h2>
+        <button onclick="changeLang('pl')">Polski (PL)</button>
+        <button onclick="changeLang('en')">English (EN)</button>
+        <p id="lang-result" style="font-size: 20px; font-weight: bold;"></p>
+        
+        <h2>Informacje o przeglądarce:</h2>
+        <div id="browser-info" class="info"></div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h2>❓ Teraz odpowiedz na te pytania:</h2>
+        
+        <ol>
+            <li><strong>Czy widzisz zielony prostokąt z napisem "SUKCES"?</strong>
+                <ul>
+                    <li>✅ TAK = Świetnie! Czytaj dalej.</li>
+                    <li>❌ NIE = Napisz mi co widzisz</li>
+                </ul>
+            </li>
+            
+            <li><strong>Kliknij przycisk "Kliknij aby przetestować JavaScript"</strong>
+                <ul>
+                    <li>Co się stało? Czy pojawił się tekst?</li>
+                </ul>
+            </li>
+            
+            <li><strong>Jaką przeglądarką otwierasz plik?</strong>
+                <ul>
+                    <li>Chrome</li>
+                    <li>Firefox</li>
+                    <li>Edge</li>
+                    <li>Safari</li>
+                    <li>Inna - jaka?</li>
+                </ul>
+            </li>
+            
+            <li><strong>Jak otwierasz plik?</strong>
+                <ul>
+                    <li>Klikam dwukrotnie na plik</li>
+                    <li>Przeciągam na ikonę przeglądarki</li>
+                    <li>Prawy klik → Otwórz za pomocą</li>
+                    <li>Inaczej - jak?</li>
+                </ul>
+            </li>
+            
+            <li><strong>Gdzie masz plik?</strong>
+                <ul>
+                    <li>Na pulpicie</li>
+                    <li>W folderze Pobrane</li>
+                    <li>Gdzie indziej</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin-top: 20px;">
+            <h3>🔍 Jeśli widzisz tę stronę ale Mansfield Story nie działa:</h3>
+            <p>Oznacza to, że problem jest w tym głównym pliku. Odpowiedz na pytania powyżej, a znajdziemy rozwiązanie!</p>
+        </div>
+        
+        <div style="background: #f8d7da; padding: 20px; border-radius: 8px; margin-top: 20px;">
+            <h3>❌ Jeśli NIE widzisz tej strony:</h3>
+            <p>Opisz dokładnie co widzisz:</p>
+            <ul>
+                <li>Pustą stronę?</li>
+                <li>Kod HTML?</li>
+                <li>Komunikat błędu? (jaki dokładnie?)</li>
+                <li>Coś innego?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function testJS() {
+            document.getElementById('js-result').innerHTML = 
+                '<span style="color: green; font-weight: bold;">✅ JavaScript działa prawidłowo!</span>';
+        }
+        
+        function changeLang(lang) {
+            const messages = {
+                pl: '🇵🇱 Wybrałeś język Polski!',
+                en: '🇬🇧 You selected English!'
+            };
+            document.getElementById('lang-result').innerHTML = messages[lang];
+            document.getElementById('lang-result').style.color = lang === 'pl' ? '#002147' : '#D4AF37';
+        }
+        
+        // Browser info
+        window.onload = function() {
+            const info = document.getElementById('browser-info');
+            info.innerHTML = `
+                <strong>Przeglądarka:</strong> ${navigator.userAgent}<br>
+                <strong>Język:</strong> ${navigator.language}<br>
+                <strong>Online:</strong> ${navigator.onLine ? 'Tak' : 'Nie'}<br>
+                <strong>Cookies:</strong> ${navigator.cookieEnabled ? 'Włączone' : 'Wyłączone'}
+            `;
+        };
+    </script>
+</body>
+</html>

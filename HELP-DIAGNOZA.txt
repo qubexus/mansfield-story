@@ -1,0 +1,130 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║              🔍 DIAGNOZA PROBLEMU - WAŻNE! 🔍                 ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Rozumiem że problem nadal występuje.
+Musimy teraz zdiagnozować co dokładnie się dzieje.
+
+
+🎯 KROK 1: POBIERZ I OTWÓRZ TEN PLIK
+=====================================
+
+   TEST-DIAGNOSTYCZNY.html
+
+To jest prosty plik testowy (bez żadnych skomplikowanych funkcji).
+
+
+🎯 KROK 2: CO WIDZISZ?
+=======================
+
+Opcja A: Widzę stronę z zielonym napisem "SUKCES"
+   → Świetnie! Kliknij przyciski na stronie i odpowiedz na pytania
+   
+Opcja B: Widzę błąd "Error loading page" lub "ERR_NAME_NOT_RESOLVED"
+   → To oznacza że problem jest w środowisku, nie w pliku
+   
+Opcja C: Widzę pusty ekran
+   → Opisz co dokładnie widzisz
+
+Opcja D: Widzę kod HTML (tekst)
+   → Plik nie otwiera się jako strona WWW
+
+
+🎯 KROK 3: ODPOWIEDZ NA TE PYTANIA
+===================================
+
+1. Jakiej przeglądarki używasz?
+   □ Chrome
+   □ Firefox
+   □ Edge
+   □ Safari
+   □ Inna: _____________
+
+2. Jaki system operacyjny?
+   □ Windows 10/11
+   □ macOS
+   □ Linux
+   □ Inny: _____________
+
+3. Jak otwierasz plik HTML?
+   □ Dwukrotne kliknięcie
+   □ Prawy klik → Otwórz za pomocą → [przeglądarka]
+   □ Przeciągam na ikonę przeglądarki
+   □ Inaczej: _____________
+
+4. Gdzie pobrałeś plik?
+   □ Z tego projektu
+   □ Z internetu
+   □ Email
+   □ Inne: _____________
+
+5. Co DOKŁADNIE widzisz gdy próbujesz otworzyć:
+   mansfield-story-OFFLINE.html
+   
+   Opisz:
+   _________________________________________________
+   _________________________________________________
+
+
+🔍 MOŻLIWE PRZYCZYNY PROBLEMU:
+==============================
+
+A) Przeglądarka blokuje JavaScript dla lokalnych plików
+   Rozwiązanie: Zmień ustawienia przeglądarki
+
+B) Antywirus/Firewall blokuje
+   Rozwiązanie: Tymczasowo wyłącz i przetestuj
+
+C) Plik jest uszkodzony
+   Rozwiązenie: Pobierz ponownie
+
+D) Specjalne środowisko (np. sieć firmowa, szkolna)
+   Rozwiązanie: Spróbuj na innym komputerze
+
+E) Bardzo stara przeglądarka
+   Rozwiązanie: Zaktualizuj przeglądarkę
+
+
+💡 SZYBKI TEST:
+===============
+
+1. Otwórz przeglądarkę
+2. Naciśnij Ctrl+O (lub Cmd+O na Mac)
+3. Wybierz plik: TEST-DIAGNOSTYCZNY.html
+4. Co się stało?
+
+
+🆘 JEŚLI WSZYSTKO ZAWODZI:
+==========================
+
+Ostateczne rozwiązanie:
+
+1. Stwórz DARMOWE konto na GitHub.com
+2. Stwórz nowe repozytorium (publiczne)
+3. Wrzuć plik mansfield-story-OFFLINE.html
+4. Zmień nazwę na: index.html
+5. Włącz GitHub Pages w Settings → Pages
+6. Po 2 minutach dostaniesz działający link!
+
+To GWARANTUJE że zadziała, bo będzie online.
+
+
+📧 NAPISZ MI:
+=============
+
+Proszę odpowiedz dokładnie na pytania z KROKU 3.
+Bez tych informacji nie mogę pomóc dalej.
+
+Potrzebuję wiedzieć:
+- Jaką używasz przeglądarką
+- Co DOKŁADNIE widzisz
+- Czy TEST-DIAGNOSTYCZNY.html działa
+
+
+═══════════════════════════════════════════════════════════════
+
+Czekam na Twoje odpowiedzi! 🙏
+
+═══════════════════════════════════════════════════════════════
